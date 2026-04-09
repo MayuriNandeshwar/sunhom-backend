@@ -15,7 +15,7 @@ import java.util.UUID;
 public class NewsletterService {
 
     private final NewsletterSubscriberRepository repository;
-    private final EmailService emailService;
+    // private final EmailService emailService;
 
     public String subscribe(NewsletterSubscribeRequest request) {
 
@@ -31,8 +31,8 @@ public class NewsletterService {
         subscriber.setCreatedAt(LocalDateTime.now());
 
         repository.save(subscriber);
-        emailService.sendNewsletterWelcome(subscriber.getEmail());
-        
+        // emailService.sendNewsletterWelcome(subscriber.getEmail());
+
         return "SUBSCRIBED";
     }
 }
