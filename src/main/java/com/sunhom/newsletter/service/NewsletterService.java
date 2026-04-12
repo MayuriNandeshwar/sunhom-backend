@@ -1,6 +1,5 @@
 package com.sunhom.newsletter.service;
 
-import com.sunhom.common.email.EmailService;
 import com.sunhom.newsletter.dto.NewsletterSubscribeRequest;
 import com.sunhom.newsletter.entity.NewsletterSubscriber;
 import com.sunhom.newsletter.repository.NewsletterSubscriberRepository;
