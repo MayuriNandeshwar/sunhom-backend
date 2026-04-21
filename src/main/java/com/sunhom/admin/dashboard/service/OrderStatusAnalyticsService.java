@@ -1,6 +1,6 @@
 package com.sunhom.admin.dashboard.service;
 
-import org.springframework.cache.annotation.Cacheable;
+//import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.sunhom.admin.dashboard.dto.OrderStatusDistributionDto;
@@ -19,7 +19,7 @@ public class OrderStatusAnalyticsService {
         this.repository = repository;
     }
 
-    @Cacheable(value = "admin-dashboard-order-status:v1")
+    // @Cacheable(value = "admin-dashboard-order-status:v1")
     public List<OrderStatusDistributionDto> getOrderStatusDistribution() {
 
         List<Object[]> rows = repository.fetchOrderStatusDistribution();

@@ -27,8 +27,14 @@ public interface BestsellerRepository extends JpaRepository<Products, UUID> {
                 ) AS discount_percentage,
                 pi1.product_image_url AS image_url,
                 pi2.product_image_url AS hover_image_url,
-                (COALESCE(i.available_quantity, 0) > 0) AS in_stock
+                (COALESCE(i.available_quantity, 0) > 0) AS in_stock,
+                c.category_name,
+                c.slug   -- ✅ NEW FIELD
+
             FROM products p
+
+            JOIN categories c
+                ON c.category_id = p.category_id
 
             JOIN product_variants pv
                 ON pv.product_id = p.product_id
@@ -44,7 +50,7 @@ public interface BestsellerRepository extends JpaRepository<Products, UUID> {
 
             LEFT JOIN product_images pi2
                 ON pi2.variant_id = pv.variant_id
-                 AND pi2.is_hover_image = true
+                AND pi2.is_hover_image = true
 
             LEFT JOIN order_items oi
                 ON oi.variant_id = pv.variant_id
@@ -70,7 +76,9 @@ public interface BestsellerRepository extends JpaRepository<Products, UUID> {
                 pv.mrp,
                 pi1.product_image_url,
                 pi2.product_image_url,
-                i.available_quantity
+                i.available_quantity,
+                c.category_name,
+                c.slug   -- ✅ ADD HERE
 
             ORDER BY
                 p.is_manual_bestseller DESC,

@@ -1,6 +1,6 @@
 package com.sunhom.admin.dashboard.service;
 
-import org.springframework.cache.annotation.Cacheable;
+//import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.sunhom.admin.dashboard.dto.DashboardSummaryDto;
@@ -25,7 +25,7 @@ public class AdminDashboardService {
      * =============================
      */
 
-    @Cacheable(value = "dashboard-summary", key = "#period")
+    // @Cacheable(value = "dashboard-summary", key = "#period")
     public DashboardSummaryDto getSummary(DashboardPeriod period) {
 
         OffsetDateTime now = OffsetDateTime.now();

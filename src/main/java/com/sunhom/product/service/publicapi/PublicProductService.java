@@ -25,7 +25,7 @@ public class PublicProductService {
         private final ProductImageRepository imageRepo;
 
         @Transactional(readOnly = true)
-        @Cacheable(value = "publicProduct", key = "#slug")
+        // @Cacheable(value = "publicProduct", key = "#slug")
         public PublicProductDetailDto getProductBySlug(String slug) {
 
                 Products product = productRepo
@@ -47,6 +47,11 @@ public class PublicProductService {
                                 .slug(product.getSlug())
                                 .brand(product.getBrand())
                                 .description(product.getProductDescription())
+
+                                // ✅ CATEGORY ADDED
+                                .category(product.getCategories().getCategoryName())
+                                .categorySlug(product.getCategories().getSlug())
+
                                 .seo(mapSeo(product))
                                 .variants(mapVariants(variants))
                                 .attributes(mapAttributes(attributes))

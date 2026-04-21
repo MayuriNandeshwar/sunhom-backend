@@ -44,4 +44,10 @@ public class NewArrivalProductDto {
 
     @JsonProperty("inStock")
     private Boolean inStock;
+
+    @JsonProperty("category")
+    private String category;
+
+    @JsonProperty("categorySlug")
+    private String categorySlug;
 }

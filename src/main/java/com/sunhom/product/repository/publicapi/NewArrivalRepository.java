@@ -30,7 +30,11 @@ public interface NewArrivalRepository extends JpaRepository<Products, UUID> {
                 ),
                 primary_img.product_image_url,
                 hover_img.product_image_url,
-                (COALESCE(i.available_quantity,0) > 0)
+                (COALESCE(i.available_quantity,0) > 0),
+
+                -- ✅ NEW
+                c.category_name,
+                c.slug
 
             FROM products p
 
@@ -49,6 +53,10 @@ public interface NewArrivalRepository extends JpaRepository<Products, UUID> {
             LEFT JOIN product_images hover_img
                 ON hover_img.product_id = p.product_id
                 AND hover_img.is_hover_image = true
+
+            -- ✅ NEW
+            LEFT JOIN categories c
+                ON c.category_id = p.category_id
 
             WHERE
                 p.is_active = true

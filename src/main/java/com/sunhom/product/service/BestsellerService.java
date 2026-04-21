@@ -25,7 +25,7 @@ public class BestsellerService {
      * Cache name: bestsellers:v2
      * TTL: 10 minutes
      */
-    @Cacheable(value = "bestsellers:v2")
+    // @Cacheable(value = "bestsellers:v2")
     public List<BestsellerProductDto> getBestsellers() {
 
         log.info("🔥 CACHE MISS: Fetching bestsellers from database");
@@ -39,17 +39,19 @@ public class BestsellerService {
 
         return rows.stream()
                 .map(r -> new BestsellerProductDto(
-                        (UUID) r[0], // product_id
-                        (String) r[1], // product_name
-                        (String) r[2], // slug
-                        (String) r[3], // short_description
-                        (String) r[4], // sku
-                        (BigDecimal) r[5], // price
-                        (BigDecimal) r[6], // mrp
-                        (BigDecimal) r[7], // discount_percentage
-                        (String) r[8], // image_url
-                        (String) r[9], // hover_image_url
-                        (Boolean) r[10] // in_stock
+                        (UUID) r[0],
+                        (String) r[1],
+                        (String) r[2],
+                        (String) r[3],
+                        (String) r[4],
+                        (BigDecimal) r[5],
+                        (BigDecimal) r[6],
+                        (BigDecimal) r[7],
+                        (String) r[8],
+                        (String) r[9],
+                        (Boolean) r[10],
+                        (String) r[11], // category name
+                        (String) r[12] // category slug
                 ))
                 .toList();
     }
@@ -57,7 +59,7 @@ public class BestsellerService {
     /**
      * Clear bestsellers cache
      */
-    @CacheEvict(value = "bestsellers:v2", allEntries = true)
+    // @CacheEvict(value = "bestsellers:v2", allEntries = true)
     public void evictBestsellersCache() {
         log.info("🧹 Bestseller cache cleared (v2)");
     }

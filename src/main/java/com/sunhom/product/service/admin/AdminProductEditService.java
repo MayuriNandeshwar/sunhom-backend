@@ -62,7 +62,7 @@ public class AdminProductEditService {
     }
 
     @SuppressWarnings("null")
-    @CacheEvict(value = "publicProduct", key = "#p.slug")
+    // @CacheEvict(value = "publicProduct", key = "#p.slug")
     @Transactional
     public void updateProduct(UUID productId, AdminProductUpdateDto dto) {
 

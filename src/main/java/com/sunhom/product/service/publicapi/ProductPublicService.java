@@ -17,7 +17,7 @@ public class ProductPublicService {
 
         private final ProductPublicRepository repository;
 
-        @Cacheable(value = "products_by_category:v1", key = "#categorySlug")
+        // @Cacheable(value = "products_by_category:v1", key = "#categorySlug")
         public List<ProductListingDto> getProductsByCategoryAdvanced(
                         String categorySlug,
                         BigDecimal minPrice,

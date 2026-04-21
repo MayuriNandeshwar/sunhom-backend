@@ -52,4 +52,10 @@ public class BestsellerProductDto {
 
     @JsonProperty("inStock")
     private Boolean inStock;
+
+    @JsonProperty("category")
+    private String category;
+
+    @JsonProperty("categorySlug")
+    private String categorySlug;
 }

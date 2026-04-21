@@ -16,7 +16,8 @@ public class PublicProductDetailDto {
     private String slug;
     private String brand;
     private String description;
-
+    private String category;
+    private String categorySlug;
     private SeoDto seo;
 
     private List<PublicVariantDto> variants;

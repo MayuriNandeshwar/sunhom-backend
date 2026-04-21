@@ -1,6 +1,6 @@
 package com.sunhom.admin.dashboard.service;
 
-import org.springframework.cache.annotation.Cacheable;
+//import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.sunhom.admin.dashboard.dto.RevenueAnalyticsDto;
@@ -21,7 +21,7 @@ public class RevenueAnalyticsService {
         this.repository = repository;
     }
 
-    @Cacheable(value = "admin-dashboard-revenue-analytics:v1", key = "#days")
+   // @Cacheable(value = "admin-dashboard-revenue-analytics:v1", key = "#days")
     public List<RevenueAnalyticsDto> getRevenueAnalytics(int days) {
 
         OffsetDateTime end = OffsetDateTime.now();
