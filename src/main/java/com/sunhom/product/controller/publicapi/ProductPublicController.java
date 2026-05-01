@@ -25,10 +25,9 @@ public class ProductPublicController {
             @RequestParam(required = false) Boolean inStock,
             @RequestParam(required = false) String sort) {
 
-        String slug = mapCategory(category);
 
         List<ProductListingDto> data = service.getProductsByCategoryAdvanced(
-                slug,
+                category,
                 minPrice,
                 maxPrice,
                 inStock,
@@ -40,15 +39,5 @@ public class ProductPublicController {
                 "data", data);
     }
 
-    // ===============================
-    // CATEGORY MAPPING METHOD
-    // ===============================
-    private String mapCategory(String category) {
-        return switch (category.toLowerCase()) {
-            case "drive" -> "drive-collection";
-            case "ritual" -> "pure-air-rituals";
-            case "candle" -> "signature-candle-collection";
-            default -> throw new IllegalArgumentException("Invalid category");
-        };
-    }
+    
 }
