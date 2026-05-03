@@ -30,7 +30,8 @@ public interface ProductPublicRepository extends JpaRepository<Products, UUID> {
                 ) AS NUMERIC
             ),
                 pi.product_image_url,
-                (COALESCE(i.available_quantity, 0) > 0)
+                (COALESCE(i.available_quantity, 0) > 0),
+            c.slug AS category_slug
             FROM products p
             JOIN categories c ON c.category_id = p.category_id
             JOIN product_variants pv

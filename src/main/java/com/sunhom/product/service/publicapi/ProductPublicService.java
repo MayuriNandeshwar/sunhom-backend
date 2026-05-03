@@ -43,7 +43,8 @@ public class ProductPublicService {
                                                 (BigDecimal) r[6],
                                                 new BigDecimal(r[7].toString()),
                                                 (String) r[8],
-                                                (Boolean) r[9]))
+                                                (Boolean) r[9],
+                                                (String) r[10]))
                                 .toList();
         }
 }
