@@ -1,11 +1,17 @@
 package com.sunhom.inventory.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name = "product_stock_log")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ProductStockLog {
 
     @Id
@@ -33,8 +39,8 @@ public class ProductStockLog {
 
     @PrePersist
     void onCreate() {
-        this.createdAt = OffsetDateTime.now();
+        if (this.createdAt == null) {
+            this.createdAt = OffsetDateTime.now();
+        }
     }
-
-    /* getters */
 }
